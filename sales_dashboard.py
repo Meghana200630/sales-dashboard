@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import matplotlib.pyplot as plt
 
 st.title("Sales Data Visualization Dashboard")
 
@@ -10,7 +11,10 @@ data = {
 
 df = pd.DataFrame(data)
 
-st.write("Sales Data")
 st.write(df)
 
 st.bar_chart(df.set_index("Month"))
+
+fig, ax = plt.subplots()
+ax.plot(df["Month"], df["Sales"], marker='o')
+st.pyplot(fig)
